@@ -2,10 +2,15 @@ from micrograd.engine import Value
 
 a = Value(2)
 b = Value(3)
-c = a + b
+c = Value(4)
+d = a + b * c
+e = Value.relu(d)
+e.backward()
+print(a,b,d,c,d,e)
 
-c.backward()
-print(a, b, c)
+# c.backward()
+
+# print(a, b, c)
 
 # d = a * b + b**3
 # c += c + 1
