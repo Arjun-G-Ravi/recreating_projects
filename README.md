@@ -1,1 +1,1 @@
-I ty replicating popular papers and projects.
+I try replicating popular papers and projects.
