@@ -3,11 +3,11 @@ class Value:
         self.val = val
         self.grad = 0
         self._prev = set(_children)  # This exists only for operations
-        self._op = _op  # This exists for only operations
-        self._backward = lambda: None  # an empty function
+        self._op = _op  # This also exists for only operations
+        self._backward = lambda: None  # an empty function, but will be defined for operations
 
     def __repr__(self):
-        return f'<Value>(val={self.val}, grad={self.grad})\n'
+        return f'<Value Object: val={self.val}, grad={self.grad}>'
     
     def __add__(self,other):
         other = other if isinstance(other, Value) else Value(other)
@@ -39,6 +39,7 @@ class Value:
 
     def __rsub__(self, other):
         return self-other
+    
     def relu(self):
         out = Value(max(0, self.val), (self,), 'relu')
         
