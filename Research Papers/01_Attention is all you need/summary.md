@@ -5,7 +5,9 @@
  - Uses the attention mechanism
  - Drops RNN and CNN concepts
  - Improved parallelisation
- - Figures out global dependencies between input and output 
+ - Figures out global dependencies between input and output
+ - The ability to understand long-range dependencies in the network is far superior to other models
+ - 
 
 The Transformer is the first transduction model relying entirely on self-attention to compute representations of its input and output without using sequence aligned RNNs or convolution.
 
@@ -43,5 +45,17 @@ we found it beneficial to linearly project the queries, keys and values h times 
 linear projections to dk , dk and dv dimensions, respectively.On each of these projected versions of
 queries, keys and values we then perform the attention function in parallel, yielding dv -dimensional output values. These are concatenated and once again projected, resulting in the final values, as depicted in Figure
 
-![Alt text](<Screenshot from 2023-11-18 20-57-25.png>)
+![Alt text](<Screenshot from 2023-11-18 21-10-04.png>)
+
+In "encoder-decoder attention" layers, the queries come from the previous decoder layer,
+and the memory keys and values come from the output of the encoder. This allows every
+position in the decoder to attend over all positions in the input sequence.
+
+## Positional Encoding
+
+Since our model contains no recurrence and no convolution, in order for the model to make use of the
+order of the sequence, we must inject some information about the relative or absolute position of the
+tokens in the sequence.In this work, we use sine and cosine functions of different frequencies.
+
+
 
