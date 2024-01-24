@@ -1,1 +1,1 @@
-I try replicating popular papers and projects.
+I try replicating popular projects. This is primarily for study purposes.
